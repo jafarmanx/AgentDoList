@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents working with this repository.
 
 ## What is CurioArch?
 
-CurioArch is a collaborative project management and issue tracking application built by 37signals/Basecamp. It's a kanban-style tool for teams to create and manage cards (tasks/issues) across boards, organize work into columns representing workflow stages, and collaborate via comments, mentions, and assignments.
+CurioArch is a collaborative project management and issue tracking application. It's a kanban-style tool for teams to create and manage cards (tasks/issues) across boards, organize work into columns representing workflow stages, and collaborate via comments, mentions, and assignments.
 
 ## Development Commands
 

@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV.fetch("MAILER_FROM_ADDRESS", "CurioArch <support@curioarch.do>")
+  default from: ENV.fetch("MAILER_FROM_ADDRESS", "CurioArch <support@localhost>")
 
   layout "mailer"
   append_view_path Rails.root.join("app/views/mailers")

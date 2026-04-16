@@ -18,7 +18,6 @@
     background: none;
   }
 
-  .icon--37signals { --svg: url("37signals.svg"); }
   .icon--add { --svg: url("add.svg "); }
   .icon--add--meta { --svg: url("add--meta.svg "); }
   .icon--arrow-left { --svg: url("arrow-left.svg "); }

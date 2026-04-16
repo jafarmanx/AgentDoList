@@ -16,6 +16,14 @@ module ApplicationHelper
     "(not found)"
   end
 
+  def support_email
+    ENV.fetch("SUPPORT_EMAIL", "support@localhost")
+  end
+
+  def app_url
+    ENV.fetch("APP_URL", root_url)
+  end
+
   def back_link_to(label, url, action, **options)
     link_to url, class: "btn btn--back", data: { controller: "hotkey", action: action }, **options do
       icon_tag("arrow-left") + tag.strong("Back to #{label}", class: "overflow-ellipsis") + tag.kbd("ESC", class: "txt-x-small hide-on-touch").html_safe

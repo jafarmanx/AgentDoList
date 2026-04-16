@@ -15,7 +15,7 @@ class WebPush::Notification
 
   private
     def vapid_identification
-      { subject: "mailto:support@curioarch.do" }.merge \
+      { subject: "mailto:#{ENV.fetch("VAPID_CONTACT_EMAIL", ENV.fetch("MAILER_FROM_ADDRESS", "support@localhost"))}" }.merge \
         Rails.configuration.x.vapid.symbolize_keys
     end
 

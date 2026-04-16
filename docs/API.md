@@ -33,7 +33,7 @@ Then click on "Generate access token".
 To authenticate a request using your access token, include it in the `Authorization` header:
 
 ```bash
-curl -H "Authorization: Bearer put-your-access-token-here" -H "Accept: application/json" https://app.curioarch.do/my/identity
+curl -H "Authorization: Bearer put-your-access-token-here" -H "Accept: application/json" https://your-curioarch-host.example.com/my/identity
 ```
 
 ## Caching
@@ -178,7 +178,7 @@ curl -X POST \
       "content_type": "image/png"
     }
   }' \
-  https://app.curioarch.do/123456/rails/active_storage/direct_uploads
+  https://your-curioarch-host.example.com/123456/rails/active_storage/direct_uploads
 ```
 
 The `checksum` is a Base64-encoded MD5 hash of the file content.

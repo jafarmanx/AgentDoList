@@ -1,13 +1,13 @@
 # CurioArch
 
-This is the source code of [CurioArch](https://curioarch.do/), the Kanban tracking tool for issues and ideas by [37signals](https://37signals.com).
+This is the source code of CurioArch, a Kanban tracking tool for issues and ideas.
 
 ## Deploying CurioArch
 
 If you'd like to run CurioArch on your own server, we recommend deploying it with [Kamal](https://kamal-deploy.org/).
 Kamal makes it easier to set up a bare server, copy the application to it, and manage the configuration settings that it uses.
 
-(Kamal is also what we use to deploy CurioArch at 37signals. If you're curious about what our deployment configuration looks like, you can find it inside [`curio-arch-saas`](https://github.com/basecamp/curio-arch-saas).)
+See [config/deploy.yml](config/deploy.yml) for the starter Kamal configuration you can adapt for your own infrastructure.
 
 This repo contains a starter deployment file that you can modify for your own specific use. That file lives at [config/deploy.yml](config/deploy.yml), which is the default place where Kamal will look for it.
 
@@ -187,12 +187,6 @@ bin/rails dev:email
 ```
 
 Under the hood, this will create or remove `tmp/email-dev.txt`.
-
-## SaaS gem
-
-37signals bundles CurioArch with [`curio-arch-saas`](https://github.com/basecamp/curio-arch-saas), a companion gem that links CurioArch with our billing system and contains our production setup.
-
-This gem depends on some private git repositories and it is not meant to be used by third parties. But we hope it can serve as inspiration for anyone wanting to run CurioArch on their own infrastructure.
 
 ## Contributing
 

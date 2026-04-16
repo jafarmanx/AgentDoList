@@ -7,11 +7,12 @@ require "optparse"
 class AccountExistsError < StandardError; end
 
 class Import
-  FIX_LINK_HOSTS = {
-    "curioarch.37signals.com" => "app.curioarch.do",
-    "box-car.com" => "app.curioarch.do",
-    "app.box-car.com" => "app.curioarch.do"
-  }.freeze
+  # Map legacy hostnames to the current deployment domain.
+  # Configure APP_HOST to match your deployment (e.g. "app.example.com").
+  FIX_LINK_HOSTS = ENV.fetch("IMPORT_FIX_LINK_HOSTS", "").split(",").each_with_object({}) do |mapping, hash|
+    old_host, new_host = mapping.strip.split("=", 2)
+    hash[old_host] = new_host if old_host && new_host
+  end.freeze
 
   attr_reader :db_path, :untenanted_db_path, :skip_already_imported
   attr_reader :account, :tenant, :mapping
