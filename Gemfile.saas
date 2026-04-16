@@ -6,7 +6,7 @@ git_source(:bc) { |repo| "https://github.com/basecamp/#{repo}" }
 # SaaS-only functionality
 gem "activeresource", require: "active_resource"
 gem "queenbee", bc: "queenbee-plugin"
-gem "fizzy-saas", bc: "fizzy-saas"
+gem "curio-arch-saas", bc: "curio-arch-saas"
 gem "console1984", bc: "console1984"
 gem "audits1984", bc: "audits1984"
 

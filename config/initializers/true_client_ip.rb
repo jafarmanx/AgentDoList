@@ -4,7 +4,7 @@
 #
 #  https://github.com/basecamp/f5-tf/blob/1543f7bfa3961a79e397f80cf041d75567f1b2f8/ams-base/iRules/manage_x_forwarded.tcl
 #
-#  However, for Fizzy the F5s are configured to do passthrough, so the header value isn't being
+#  However, for CurioArch the F5s are configured to do passthrough, so the header value isn't being
 #  copied for us. Let's do that bit of work here, before Rails' RemoteIp middleware.
 #
 class TrackTrueClientIp

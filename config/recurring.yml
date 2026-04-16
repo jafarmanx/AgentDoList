@@ -1,4 +1,4 @@
-<% require_relative "../lib/fizzy" %>
+<% require_relative "../lib/curio_arch" %>
 
 production: &production
   # Application functionality: notifications and summaries
@@ -31,7 +31,7 @@ production: &production
     command: "Account::Export.cleanup"
     schedule: every hour at minute 20
 
-<% if Fizzy.saas? %>
+<% if CurioArch.saas? %>
   # Metrics
   yabeda_actioncable:
     command: "Yabeda::ActionCable.measure"

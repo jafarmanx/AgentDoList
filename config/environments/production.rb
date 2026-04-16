@@ -43,7 +43,7 @@ Rails.application.configure do
   }
 
   # Select Active Storage service via env var; default to local disk.
-  # Don't overwrite if it's already been set (e.g. by fizzy-saas)
+  # Don't overwrite if it's already been set (e.g. by curio-arch-saas)
   if config.active_storage.service.blank?
     config.active_storage.service = ENV.fetch("ACTIVE_STORAGE_SERVICE", "local").to_sym
   end
@@ -87,7 +87,7 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = :solid_queue
   config.solid_queue.connects_to = { database: { writing: :queue, reading: :queue } }
-  # config.active_job.queue_name_prefix = "fizzy_production"
+  # config.active_job.queue_name_prefix = "curio_arch_production"
 
   config.action_mailer.perform_caching = false
 

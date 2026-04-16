@@ -31,7 +31,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: fizzy_test
+          MYSQL_DATABASE: curio_arch_test
         ports:
           - 3306:3306
         options: >-
@@ -48,8 +48,8 @@ jobs:
       MYSQL_HOST: 127.0.0.1
       MYSQL_PORT: 3306
       MYSQL_USER: root
-      FIZZY_DB_HOST: 127.0.0.1
-      FIZZY_DB_PORT: 3306
+      CURIO_ARCH_DB_HOST: 127.0.0.1
+      CURIO_ARCH_DB_PORT: 3306
       BUNDLE_GITHUB__COM: ${{ inputs.saas && format('x-access-token:{0}', secrets.GH_TOKEN) || '' }}
 
     steps:
