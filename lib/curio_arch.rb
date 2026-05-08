@@ -1,4 +1,4 @@
-module Fizzy
+module CurioArch
   class << self
     def saas?
       return @saas if defined?(@saas)

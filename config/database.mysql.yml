@@ -11,34 +11,34 @@ default: &default
 development:
   primary:
     <<: *default
-    database: fizzy_development
+    database: curio_arch_development
   cable:
     <<: *default
-    database: fizzy_development_cable
+    database: curio_arch_development_cable
     migrations_paths: db/cable_migrate
 
 test:
   primary:
     <<: *default
-    database: fizzy_test
+    database: curio_arch_test
   cable:
     <<: *default
-    database: fizzy_test_cable
+    database: curio_arch_test_cable
     migrations_paths: db/cable_migrate
 
 production:
   primary:
     <<: *default
-    database: fizzy_production
+    database: curio_arch_production
   cable:
     <<: *default
-    database: fizzy_production_cable
+    database: curio_arch_production_cable
     migrations_paths: db/cable_migrate
   queue:
     <<: *default
-    database: fizzy_production_queue
+    database: curio_arch_production_queue
     migrations_paths: db/queue_migrate
   cache:
     <<: *default
-    database: fizzy_production_cache
+    database: curio_arch_production_cache
     migrations_paths: db/cache_migrate

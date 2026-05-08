@@ -1,10 +1,10 @@
 require_relative "boot"
 require "rails/all"
-require_relative "../lib/fizzy"
+require_relative "../lib/curio_arch"
 
 Bundler.require(*Rails.groups)
 
-module Fizzy
+module CurioArch
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1

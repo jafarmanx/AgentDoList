@@ -8,7 +8,7 @@ local:
 
 devminio:
   service: S3
-  bucket: fizzy-dev-activestorage
+  bucket: curio-arch-dev-activestorage
   endpoint: "http://minio.localhost:39000"
   force_path_style: true
   request_checksum_calculation: when_required # default is when_supported with CRC64NVME checksum which FlashBlade doesn't support
@@ -20,7 +20,7 @@ devminio:
 s3:
   service: S3
   access_key_id: <%= ENV["S3_ACCESS_KEY_ID"] %>
-  bucket: <%= ENV["S3_BUCKET"] || "fizzy-#{Rails.env}-activestorage" %>
+  bucket: <%= ENV["S3_BUCKET"] || "curio-arch-#{Rails.env}-activestorage" %>
   endpoint: <%= ENV["S3_ENDPOINT"] %>
   force_path_style: <%= ENV["S3_FORCE_PATH_STYLE"] == "true" %>
   region: <%= ENV.fetch("S3_REGION", "us-east-1") %>

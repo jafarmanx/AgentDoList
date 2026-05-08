@@ -90,13 +90,13 @@ needs_seeding() {
 
 oss_mysql_setup() {
   if ! nc -z localhost 3306 2>/dev/null; then
-    if docker ps -aq -f name=fizzy-mysql | grep -q .; then
-      step "Starting MySQL" docker start fizzy-mysql
+    if docker ps -aq -f name=curio-arch-mysql | grep -q .; then
+      step "Starting MySQL" docker start curio-arch-mysql
     else
       step "Setting up MySQL" bash -c '
         docker pull mysql:8.4
         docker run -d \
-          --name fizzy-mysql \
+          --name curio-arch-mysql \
           -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
           -p 3306:3306 \
           mysql:8.4
@@ -108,7 +108,7 @@ oss_mysql_setup() {
 
 echo
 gum style --foreground 153 "   ˚ ∘             ∘ ˚   "
-gum style --foreground 111 --bold "  ∘˚˳°∘°  𝒻𝒾𝓏𝓏𝓎  °∘°˳˚∘  "
+gum style --foreground 111 --bold "  ∘˚˳°∘°  𝒸𝓊𝓇𝒾𝑜𝒶𝓇𝒸𝒽  °∘°˳˚∘  "
 echo
 
 step "Installing Ruby" mise install --yes
@@ -136,7 +136,7 @@ bundle config set --local auto_install true
 step "Installing RubyGems" bundle install
 
 if [ -n "$SAAS" ]; then
-  saas_setup=$(bundle show fizzy-saas)/bin/setup
+  saas_setup=$(bundle show curio-arch-saas)/bin/setup
   source "$saas_setup"
 else
   if [ "$DATABASE_ADAPTER" = "mysql" ]; then

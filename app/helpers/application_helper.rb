@@ -3,7 +3,7 @@ module ApplicationHelper
     account_name = if Current.account && Current.session&.identity&.users&.many?
       Current.account&.name
     end
-    tag.title [ @page_title, account_name, "Fizzy" ].compact.join(" | ")
+    tag.title [ @page_title, account_name, "CurioArch" ].compact.join(" | ")
   end
 
   def icon_tag(name, **options)
@@ -14,6 +14,14 @@ module ApplicationHelper
     file_path = "#{Rails.root}/app/assets/images/#{name}.svg"
     return File.read(file_path).html_safe if File.exist?(file_path)
     "(not found)"
+  end
+
+  def support_email
+    ENV.fetch("SUPPORT_EMAIL", "support@localhost")
+  end
+
+  def app_url
+    ENV.fetch("APP_URL", root_url)
   end
 
   def back_link_to(label, url, action, **options)

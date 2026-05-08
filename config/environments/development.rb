@@ -83,7 +83,7 @@ Rails.application.configure do
     config.action_mailer.raise_delivery_errors = false
   end
 
-  config.hosts = %w[ fizzy.localhost localhost 127.0.0.1 ] + [ /^fizzy-\d+(:\d+)$/ ]
+  config.hosts = %w[ curioarch.localhost localhost 127.0.0.1 ] + [ /^curioarch-\d+(:\d+)$/ ]
 
   # Set host to be used by links generated in mailer and notification view templates.
   config.action_controller.default_url_options = { host: config.hosts.first, port: 3006 }

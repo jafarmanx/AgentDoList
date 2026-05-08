@@ -10,7 +10,7 @@ class ExportMailerTest < ActionMailer::TestCase
     end
 
     assert_equal [ "david@37signals.com" ], email.to
-    assert_equal "Your Fizzy data export is ready for download", email.subject
+    assert_equal "Your CurioArch data export is ready for download", email.subject
     assert_match %r{/exports/#{export.id}}, email.body.encoded
   end
 end

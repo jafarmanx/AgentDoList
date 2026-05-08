@@ -1,6 +1,6 @@
-# Fizzy API
+# CurioArch API
 
-Fizzy has an API that allows you to integrate your application with it or to create
+CurioArch has an API that allows you to integrate your application with it or to create
 a bot to perform various actions for you.
 
 ## Authentication
@@ -33,7 +33,7 @@ Then click on "Generate access token".
 To authenticate a request using your access token, include it in the `Authorization` header:
 
 ```bash
-curl -H "Authorization: Bearer put-your-access-token-here" -H "Accept: application/json" https://app.fizzy.do/my/identity
+curl -H "Authorization: Bearer put-your-access-token-here" -H "Accept: application/json" https://your-curioarch-host.example.com/my/identity
 ```
 
 ## Caching
@@ -114,9 +114,9 @@ and we use a dynamic page size where initial pages return fewer results than lat
 If there are more results to fetch, the response will include a `Link` header with a `rel="next"` link to the next page of results:
 
 ```bash
-curl -H "Authorization: Bearer put-your-access-token-here" -H "Accept: application/json" -v http://fizzy.localhost:3006/686465299/cards
+curl -H "Authorization: Bearer put-your-access-token-here" -H "Accept: application/json" -v http://curioarch.localhost:3006/686465299/cards
 # ...
-< link: <http://fizzy.localhost:3006/686465299/cards?page=2>; rel="next"
+< link: <http://curioarch.localhost:3006/686465299/cards?page=2>; rel="next"
 # ...
 ```
 
@@ -142,7 +142,7 @@ curl -X PUT \
   -H "Authorization: Bearer put-your-access-token-here" \
   -F "user[name]=David H. Hansson" \
   -F "user[avatar]=@/path/to/avatar.jpg" \
-  http://fizzy.localhost:3006/686465299/users/03f5v9zjw7pz8717a4no1h8a7
+  http://curioarch.localhost:3006/686465299/users/03f5v9zjw7pz8717a4no1h8a7
 ```
 
 ## Rich Text Fields
@@ -178,7 +178,7 @@ curl -X POST \
       "content_type": "image/png"
     }
   }' \
-  https://app.fizzy.do/123456/rails/active_storage/direct_uploads
+  https://your-curioarch-host.example.com/123456/rails/active_storage/direct_uploads
 ```
 
 The `checksum` is a Base64-encoded MD5 hash of the file content.
@@ -234,7 +234,7 @@ The `sgid` attribute should contain the `signed_id` returned from the direct upl
 
 ## Identity
 
-An Identity represents a person using Fizzy.
+An Identity represents a person using CurioArch.
 
 ### `GET /my/identity`
 
@@ -255,7 +255,7 @@ Returns a list of accounts the identity has access to, including the user for ea
         "active": true,
         "email_address": "david@example.com",
         "created_at": "2025-12-05T19:36:35.401Z",
-        "url": "http://fizzy.localhost:3006/users/03f5v9zjw7pz8717a4no1h8a7"
+        "url": "http://curioarch.localhost:3006/users/03f5v9zjw7pz8717a4no1h8a7"
       }
     },
     {
@@ -270,7 +270,7 @@ Returns a list of accounts the identity has access to, including the user for ea
         "active": true,
         "email_address": "david@example.com",
         "created_at": "2025-12-05T19:36:36.783Z",
-        "url": "http://fizzy.localhost:3006/users/03f5v9zppzlksuj4mxba2nbzn"
+        "url": "http://curioarch.localhost:3006/users/03f5v9zppzlksuj4mxba2nbzn"
       }
     }
   ]
@@ -291,10 +291,10 @@ __Response:__
 [
   {
     "id": "03f5v9zkft4hj9qq0lsn9ohcm",
-    "name": "Fizzy",
+    "name": "CurioArch",
     "all_access": true,
     "created_at": "2025-12-05T19:36:35.534Z",
-    "url": "http://fizzy.localhost:3006/897362094/boards/03f5v9zkft4hj9qq0lsn9ohcm",
+    "url": "http://curioarch.localhost:3006/897362094/boards/03f5v9zkft4hj9qq0lsn9ohcm",
     "creator": {
       "id": "03f5v9zjw7pz8717a4no1h8a7",
       "name": "David Heinemeier Hansson",
@@ -302,7 +302,7 @@ __Response:__
       "active": true,
       "email_address": "david@example.com",
       "created_at": "2025-12-05T19:36:35.401Z",
-      "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+      "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
     }
   }
 ]
@@ -317,10 +317,10 @@ __Response:__
 ```json
 {
   "id": "03f5v9zkft4hj9qq0lsn9ohcm",
-  "name": "Fizzy",
+  "name": "CurioArch",
   "all_access": true,
   "created_at": "2025-12-05T19:36:35.534Z",
-  "url": "http://fizzy.localhost:3006/897362094/boards/03f5v9zkft4hj9qq0lsn9ohcm",
+  "url": "http://curioarch.localhost:3006/897362094/boards/03f5v9zkft4hj9qq0lsn9ohcm",
   "creator": {
     "id": "03f5v9zjw7pz8717a4no1h8a7",
     "name": "David Heinemeier Hansson",
@@ -328,7 +328,7 @@ __Response:__
     "active": true,
     "email_address": "david@example.com",
     "created_at": "2025-12-05T19:36:35.401Z",
-    "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+    "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
   }
 }
 ```
@@ -445,13 +445,13 @@ __Response:__
     "golden": false,
     "last_active_at": "2025-12-05T19:38:48.553Z",
     "created_at": "2025-12-05T19:38:48.540Z",
-    "url": "http://fizzy.localhost:3006/897362094/cards/4",
+    "url": "http://curioarch.localhost:3006/897362094/cards/4",
     "board": {
       "id": "03f5v9zkft4hj9qq0lsn9ohcm",
-      "name": "Fizzy",
+      "name": "CurioArch",
       "all_access": true,
       "created_at": "2025-12-05T19:36:35.534Z",
-      "url": "http://fizzy.localhost:3006/897362094/boards/03f5v9zkft4hj9qq0lsn9ohcm",
+      "url": "http://curioarch.localhost:3006/897362094/boards/03f5v9zkft4hj9qq0lsn9ohcm",
       "creator": {
         "id": "03f5v9zjw7pz8717a4no1h8a7",
         "name": "David Heinemeier Hansson",
@@ -459,7 +459,7 @@ __Response:__
         "active": true,
         "email_address": "david@example.com",
         "created_at": "2025-12-05T19:36:35.401Z",
-        "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+        "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
       }
     },
     "creator": {
@@ -469,9 +469,9 @@ __Response:__
       "active": true,
       "email_address": "david@example.com",
       "created_at": "2025-12-05T19:36:35.401Z",
-      "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+      "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
     },
-    "comments_url": "http://fizzy.localhost:3006/897362094/cards/4/comments"
+    "comments_url": "http://curioarch.localhost:3006/897362094/cards/4/comments"
   },
 ]
 ```
@@ -659,10 +659,10 @@ __Response:__
       "active": true,
       "email_address": "david@example.com",
       "created_at": "2025-12-05T19:36:35.401Z",
-      "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+      "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
     },
-    "reactions_url": "http://fizzy.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz/reactions",
-    "url": "http://fizzy.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz"
+    "reactions_url": "http://curioarch.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz/reactions",
+    "url": "http://curioarch.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz"
   }
 ]
 ```
@@ -689,10 +689,10 @@ __Response:__
     "active": true,
     "email_address": "david@example.com",
     "created_at": "2025-12-05T19:36:35.401Z",
-    "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+    "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
   },
-  "reactions_url": "http://fizzy.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz/reactions",
-  "url": "http://fizzy.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz"
+  "reactions_url": "http://curioarch.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz/reactions",
+  "url": "http://curioarch.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz"
 }
 ```
 
@@ -771,9 +771,9 @@ __Response:__
       "active": true,
       "email_address": "david@example.com",
       "created_at": "2025-12-05T19:36:35.401Z",
-      "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+      "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
     },
-    "url": "http://fizzy.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz/reactions/03f5v9zo9qlcwwpyc0ascnikz"
+    "url": "http://curioarch.localhost:3006/897362094/cards/3/comments/03f5v9zo9qlcwwpyc0ascnikz/reactions/03f5v9zo9qlcwwpyc0ascnikz"
   }
 ]
 ```
@@ -896,13 +896,13 @@ __Response:__
     "id": "03f5v9zo9qlcwwpyc0ascnikz",
     "title": "bug",
     "created_at": "2025-12-05T19:36:35.534Z",
-    "url": "http://fizzy.localhost:3006/897362094/cards?tag_ids[]=03f5v9zo9qlcwwpyc0ascnikz"
+    "url": "http://curioarch.localhost:3006/897362094/cards?tag_ids[]=03f5v9zo9qlcwwpyc0ascnikz"
   },
   {
     "id": "03f5v9zo9qlcwwpyc0ascnilz",
     "title": "feature",
     "created_at": "2025-12-05T19:36:35.534Z",
-    "url": "http://fizzy.localhost:3006/897362094/cards?tag_ids[]=03f5v9zo9qlcwwpyc0ascnilz"
+    "url": "http://curioarch.localhost:3006/897362094/cards?tag_ids[]=03f5v9zo9qlcwwpyc0ascnilz"
   }
 ]
 ```
@@ -1023,7 +1023,7 @@ __Response:__
     "active": true,
     "email_address": "david@example.com",
     "created_at": "2025-12-05T19:36:35.401Z",
-    "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+    "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
   },
   {
     "id": "03f5v9zjysoy0fqs9yg0ei3hq",
@@ -1032,7 +1032,7 @@ __Response:__
     "active": true,
     "email_address": "jason@example.com",
     "created_at": "2025-12-05T19:36:35.419Z",
-    "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjysoy0fqs9yg0ei3hq"
+    "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjysoy0fqs9yg0ei3hq"
   },
   {
     "id": "03f5v9zk1dtqduod5bkhv3k8m",
@@ -1041,7 +1041,7 @@ __Response:__
     "active": true,
     "email_address": "jz@example.com",
     "created_at": "2025-12-05T19:36:35.435Z",
-    "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zk1dtqduod5bkhv3k8m"
+    "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zk1dtqduod5bkhv3k8m"
   },
   {
     "id": "03f5v9zk3nw9ja92e7s4h2wbe",
@@ -1050,7 +1050,7 @@ __Response:__
     "active": true,
     "email_address": "kevin@example.com",
     "created_at": "2025-12-05T19:36:35.451Z",
-    "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zk3nw9ja92e7s4h2wbe"
+    "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zk3nw9ja92e7s4h2wbe"
   }
 ]
 ```
@@ -1069,7 +1069,7 @@ __Response:__
   "active": true,
   "email_address": "david@example.com",
   "created_at": "2025-12-05T19:36:35.401Z",
-  "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+  "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
 }
 ```
 
@@ -1130,15 +1130,15 @@ __Response:__
       "active": true,
       "email_address": "david@example.com",
       "created_at": "2025-12-05T19:36:35.401Z",
-      "url": "http://fizzy.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
+      "url": "http://curioarch.localhost:3006/897362094/users/03f5v9zjw7pz8717a4no1h8a7"
     },
     "card": {
       "id": "03f5v9zo9qlcwwpyc0ascnikz",
       "title": "Plain text mentions",
       "status": "published",
-      "url": "http://fizzy.localhost:3006/897362094/cards/3"
+      "url": "http://curioarch.localhost:3006/897362094/cards/3"
     },
-    "url": "http://fizzy.localhost:3006/897362094/notifications/03f5va03bpuvkcjemcxl73ho2"
+    "url": "http://curioarch.localhost:3006/897362094/notifications/03f5va03bpuvkcjemcxl73ho2"
   }
 ]
 ```

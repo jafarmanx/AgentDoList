@@ -1,10 +1,10 @@
-# Fizzy
+# CurioArch
 
 This file provides guidance to AI coding agents working with this repository.
 
-## What is Fizzy?
+## What is CurioArch?
 
-Fizzy is a collaborative project management and issue tracking application built by 37signals/Basecamp. It's a kanban-style tool for teams to create and manage cards (tasks/issues) across boards, organize work into columns representing workflow stages, and collaborate via comments, mentions, and assignments.
+CurioArch is a collaborative project management and issue tracking application. It's a kanban-style tool for teams to create and manage cards (tasks/issues) across boards, organize work into columns representing workflow stages, and collaborate via comments, mentions, and assignments.
 
 ## Development Commands
 
@@ -14,7 +14,7 @@ bin/setup              # Initial setup (installs gems, creates DB, loads schema)
 bin/dev                # Start development server (runs on port 3006)
 ```
 
-Development URL: http://fizzy.localhost:3006
+Development URL: http://curioarch.localhost:3006
 Login with: david@example.com (development fixtures), password will appear in the browser console
 
 ### Testing
@@ -54,7 +54,7 @@ bin/kamal deploy             # Deploy (requires 1Password CLI for secrets)
 
 ### Multi-Tenancy (URL-Based)
 
-Fizzy uses **URL path-based multi-tenancy**:
+CurioArch uses **URL path-based multi-tenancy**:
 - Each Account (tenant) has a unique `external_account_id` (7+ digits)
 - URLs are prefixed: `/{account_id}/boards/...`
 - Middleware (`AccountSlug::Extractor`) extracts the account ID from the URL and sets `Current.account`
@@ -121,7 +121,7 @@ All tables use UUIDs (UUIDv7 format, base36-encoded as 25-char strings):
 ### Background Jobs (Solid Queue)
 
 Database-backed job queue (no Redis):
-- Custom `FizzyActiveJobExtensions` prepended to ActiveJob
+- Custom `CurioArchActiveJobExtensions` prepended to ActiveJob
 - Jobs automatically capture/restore `Current.account`
 - Mission Control::Jobs for monitoring
 
@@ -141,7 +141,7 @@ Key recurring tasks (via `config/recurring.yml`):
 
 ### Chrome MCP (Local Dev)
 
-URL: `http://fizzy.localhost:3006`
+URL: `http://curioarch.localhost:3006`
 Login: david@example.com (passwordless magic link auth - check rails console for link)
 
 Use Chrome MCP tools to interact with the running dev app for UI testing and debugging.

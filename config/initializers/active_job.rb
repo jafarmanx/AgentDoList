@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # inspired from code in ActiveRecord::Tenanted
-module FizzyActiveJobExtensions
+module CurioArchActiveJobExtensions
   extend ActiveSupport::Concern
 
   prepended do
@@ -35,5 +35,5 @@ module FizzyActiveJobExtensions
 end
 
 ActiveSupport.on_load(:active_job) do
-  prepend FizzyActiveJobExtensions
+  prepend CurioArchActiveJobExtensions
 end

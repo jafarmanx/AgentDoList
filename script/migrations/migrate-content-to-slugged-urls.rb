@@ -2,10 +2,12 @@
 
 require_relative "../config/environment"
 
+# Configure domain mappings for your environment.
+# These map legacy hostnames to the current deployment domain.
 domains = {
-  "production" => "box-car.com",
-  "beta" => "fizzy-beta.37signals.com",
-  "staging" => "fizzy.37signals-staging.com"
+  "production" => ENV.fetch("APP_DOMAIN", "localhost"),
+  "beta" => ENV.fetch("BETA_DOMAIN", "localhost"),
+  "staging" => ENV.fetch("STAGING_DOMAIN", "localhost")
 }
 
 def fix_attachments(rich_text)

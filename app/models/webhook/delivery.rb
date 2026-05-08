@@ -2,7 +2,7 @@ class Webhook::Delivery < ApplicationRecord
   class ResponseTooLarge < StandardError; end
 
   STALE_TRESHOLD = 7.days
-  USER_AGENT = "fizzy/1.0.0 Webhook"
+  USER_AGENT = "curioarch/1.0.0 Webhook"
   ENDPOINT_TIMEOUT = 7.seconds
   MAX_RESPONSE_SIZE = 100.kilobytes
 

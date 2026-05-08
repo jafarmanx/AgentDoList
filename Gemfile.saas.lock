@@ -20,10 +20,10 @@ GIT
       rainbow
 
 GIT
-  remote: https://github.com/basecamp/fizzy-saas
+  remote: https://github.com/basecamp/curio-arch-saas
   revision: 9c356dfeedbf5309f1a36ee3371f49604c9be188
   specs:
-    fizzy-saas (0.1.0)
+    curio-arch-saas (0.1.0)
       audits1984
       console1984
       prometheus-client-mmap (~> 1.4.0)
@@ -651,7 +651,7 @@ DEPENDENCIES
   console1984!
   debug
   faker
-  fizzy-saas!
+  curio-arch-saas!
   geared_pagination (~> 1.2)
   image_processing (~> 1.14)
   importmap-rails

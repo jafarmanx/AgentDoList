@@ -1,8 +1,11 @@
 #!/bin/sh
 
+# Notify an external deployment dashboard after a deploy.
+# Requires DEPLOY_NOTIFICATION_URL and DEPLOY_NOTIFICATION_AUTH to be set.
+#
 # Example usage: bin/notify_dash_of_deployment $MESSAGE $KAMAL_VERSION $KAMAL_PERFORMER $CURRENT_BRANCH $KAMAL_DESTINATION $KAMAL_RUNTIME
 
-if [ -n "$DASH_BASIC_AUTH_SECRET" ]; then
+if [ -n "$DEPLOY_NOTIFICATION_URL" ] && [ -n "$DEPLOY_NOTIFICATION_AUTH" ]; then
   jq -n -c --arg message "${1}" \
     --arg commit "${2}" \
     --arg author "${3}" \
@@ -10,7 +13,7 @@ if [ -n "$DASH_BASIC_AUTH_SECRET" ]; then
     --arg env "${5}" \
     --arg duration "${6}" \
     '{
-      "application":"fizzy",
+      "application":"curioarch",
       "rails_env": $env,
       "branch": $branch,
       "deployer": $author,
@@ -18,8 +21,8 @@ if [ -n "$DASH_BASIC_AUTH_SECRET" ]; then
       "rev": $commit,
       "duration": $duration
       }' |
-    curl --user "$DASH_BASIC_AUTH_SECRET" -H "Content-Type: application/json" --data-binary @- \
-      https://dash.37signals.com/deploy
+    curl --user "$DEPLOY_NOTIFICATION_AUTH" -H "Content-Type: application/json" --data-binary @- \
+      "$DEPLOY_NOTIFICATION_URL"
 else
-  echo "WARNING: Dash deploy notification not sent."
+  echo "WARNING: Deploy notification not sent (DEPLOY_NOTIFICATION_URL or DEPLOY_NOTIFICATION_AUTH not set)."
 fi

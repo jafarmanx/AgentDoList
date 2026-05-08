@@ -7,7 +7,7 @@
   >
     <% if @accounts.any? %>
       <h1 class="txt-x-large font-weight-black margin-none">
-        Your Fizzy accounts
+        Your CurioArch accounts
       </h1>
       <menu class="popup__list pad border-radius border">
         <% @accounts.each do |account| %>
@@ -21,12 +21,12 @@
       </menu>
     <% else %>
       <h1 class="txt-x-large font-weight-black margin-none">Hmm...</h1>
-      <p class="margin-none-block-start">You don’t have any Fizzy accounts.</p>
+      <p class="margin-none-block-start">You don’t have any CurioArch accounts.</p>
     <% end %>
 
     <div class="margin-block-start">
       <%= link_to new_signup_path, class: "btn btn--plain txt-link center txt-small", data: { turbo_prefetch: false } do %>
-        <span>Sign up for a new Fizzy account</span>
+        <span>Sign up for a new CurioArch account</span>
       <% end %>
     </div>
   </div>
