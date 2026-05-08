@@ -21,6 +21,9 @@ gem "sqlite3", ">= 2.0"
 gem "thruster", require: false
 gem "trilogy", "~> 2.9"
 
+# AI
+gem "anthropic"
+
 # Features
 gem "bcrypt", "~> 3.1.7"
 gem "geared_pagination", "~> 1.2"

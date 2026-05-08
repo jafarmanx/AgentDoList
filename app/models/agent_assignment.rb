@@ -13,6 +13,11 @@ class AgentAssignment < ApplicationRecord
   scope :ordered, -> { order(created_at: :desc) }
 
   after_create :provision_workspace
+  after_create_commit :execute_later
+
+  def execute_later
+    AgentExecutionJob.perform_later(self)
+  end
 
   def start
     update!(status: :working, started_at: Time.current)

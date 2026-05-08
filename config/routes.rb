@@ -91,7 +91,9 @@ Rails.application.routes.draw do
       resource :reading
 
       resources :assignments
-      resources :agent_assignments, only: %i[ new create destroy ]
+      resources :agent_assignments, only: %i[ new create destroy ] do
+        resource :retry, only: :create, module: :agent_assignments
+      end
       resources :steps
       resources :taggings
 
