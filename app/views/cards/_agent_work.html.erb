@@ -1,0 +1,23 @@
+<div class="card__agent-work margin-block" id="<%= dom_id(agent_assignment, :work) %>">
+  <div class="flex align-center gap-half margin-block-end-half">
+    <span class="txt-small font-weight-bold"><%= agent_assignment.agent.name %></span>
+    <span class="txt-x-small txt-subtle badge"><%= agent_assignment.status %></span>
+    <% if agent_assignment.duration %>
+      <span class="txt-x-small txt-subtle"><%= distance_of_time_in_words(agent_assignment.duration) %></span>
+    <% end %>
+  </div>
+
+  <% if agent_assignment.workspace&.output&.body.present? %>
+    <div class="card__agent-output pad border rounded">
+      <%= agent_assignment.workspace.output.body %>
+    </div>
+  <% end %>
+
+  <% if agent_assignment.workspace&.deliverables&.any? %>
+    <div class="card__agent-deliverables flex flex-wrap gap-half margin-block-start-half">
+      <% agent_assignment.workspace.deliverables.each do |deliverable| %>
+        <%= link_to deliverable.filename, rails_blob_path(deliverable, disposition: :inline), class: "btn btn--plain txt-link txt-small", target: "_blank" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

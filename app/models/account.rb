@@ -5,6 +5,7 @@ class Account < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :boards, dependent: :destroy
   has_many :cards, dependent: :destroy
+  has_many :agents, dependent: :destroy
   has_many :webhooks, dependent: :destroy
   has_many :tags, dependent: :destroy
   has_many :columns, dependent: :destroy

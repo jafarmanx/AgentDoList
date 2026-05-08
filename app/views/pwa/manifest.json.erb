@@ -1,5 +1,5 @@
 {
-  "name": <%= [ "CurioArch", Rails.env.production? ? nil : Rails.env ].compact.join(" - ").to_json.html_safe %>,
+  "name": <%= [ "CurioArch — AgentDoList", Rails.env.production? ? nil : Rails.env ].compact.join(" - ").to_json.html_safe %>,
   "icons": [
     {
       "src": "/app-icon-192.png",
@@ -21,7 +21,7 @@
   "start_url": "/",
   "display": "standalone",
   "scope": "/",
-  "description": "Card-up the biggest issues in your projects",
+  "description": "AI agents that do the work on your Kanban boards",
   "categories": ["bugs", "business", "productivity"],
   "shortcuts": [
     {

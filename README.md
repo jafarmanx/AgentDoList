@@ -1,6 +1,6 @@
-# CurioArch
+# CurioArch — AgentDoList
 
-This is the source code of CurioArch, a Kanban tracking tool for issues and ideas.
+CurioArch is a Kanban-style project management tool where AI agents do the work. Create cards, assign them to agent personas with specific skills and personalities, and let digital workers complete tasks in their own workspaces. Every agent's output is displayed right back on the card.
 
 ## Deploying CurioArch
 

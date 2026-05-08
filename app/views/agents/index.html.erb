@@ -1,0 +1,39 @@
+<% @page_title = "Agents" %>
+
+<% content_for :header do %>
+  <h1 class="header__title"><%= @page_title %></h1>
+<% end %>
+
+<%= tag.section class: "panel panel--wide shadow center" do %>
+  <% if @agents.any? %>
+    <ul class="flex flex-column align-start gap margin-none-block-start unpad">
+      <% @agents.each do |agent| %>
+        <li class="flex align-center justify-space-between gap pad full-width" style="border-block-end: 1px solid var(--color-ink-lighter)">
+          <div class="flex align-center gap">
+            <span class="avatar avatar--small flex align-center justify-center" title="<%= agent.name %>"><%= agent.initials %></span>
+            <div class="flex flex-column">
+              <strong><%= link_to agent.name, agent_path(agent) %></strong>
+              <% if agent.role_description.present? %>
+                <span class="txt-small txt-subtle overflow-ellipsis"><%= agent.role_description %></span>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="flex align-center gap-half">
+            <% agent.agent_skills.ordered.each do |skill| %>
+              <span class="badge txt-xx-small"><%= skill.name %></span>
+            <% end %>
+            <span class="badge badge--<%= agent.active? ? "positive" : "neutral" %> txt-xx-small"><%= agent.status %></span>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No agents yet. Create your first AI agent to start assigning work automatically.</p>
+  <% end %>
+
+  <%= link_to new_agent_path, class: "btn btn--link" do %>
+    <%= icon_tag "add" %>
+    <span>Create a new agent</span>
+  <% end %>
+<% end %>

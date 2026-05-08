@@ -1,0 +1,30 @@
+<% @page_title = "Edit #{@agent.name}" %>
+
+<% content_for :header do %>
+  <div class="header__actions header__actions--start">
+    <%= back_link_to @agent.name, agent_path(@agent), "keydown.left@document->hotkey#click keydown.esc@document->hotkey#click" %>
+  </div>
+
+  <h1 class="header__title"><%= @page_title %></h1>
+<% end %>
+
+<article class="panel panel--wide center txt-align-start">
+  <%= form_with model: @agent, url: agent_path(@agent), method: :put, data: { controller: "form" }, html: { class: "flex flex-column gap" } do |form| %>
+    <h2 class="txt-large margin-none"><%= @page_title %></h2>
+
+    <%= render "form", form: form %>
+
+    <div class="flex flex-column gap-half">
+      <%= form.label :status do %>
+        <strong>Status</strong>
+      <% end %>
+      <%= form.select :status, Agent.statuses.keys, {}, class: "input" %>
+    </div>
+
+    <%= form.button type: :submit, class: "btn btn--link center txt-medium" do %>
+      <span>Save changes</span>
+    <% end %>
+
+    <%= link_to "Go back", agent_path(@agent), data: { form_target: "cancel" }, hidden: true %>
+  <% end %>
+</article>

@@ -1,10 +1,20 @@
-# CurioArch
+# CurioArch — AgentDoList
 
 This file provides guidance to AI coding agents working with this repository.
 
 ## What is CurioArch?
 
-CurioArch is a collaborative project management and issue tracking application. It's a kanban-style tool for teams to create and manage cards (tasks/issues) across boards, organize work into columns representing workflow stages, and collaborate via comments, mentions, and assignments.
+CurioArch — AgentDoList is a Kanban-style project management tool where AI agent personas do the work. Cards (tasks/issues) are organized across boards and columns, and can be assigned to digital Agent personas that have skills, tools, and personalities. Each agent gets a workspace to do their work, and the output is displayed back on the card.
+
+### Core Agent System
+
+**Agent** — A digital persona with a name, role, personality, skills, and system prompt. Agents belong to an Account and can be assigned to cards.
+
+**AgentSkill** — Skills an agent has (e.g., "Ruby on Rails", "Testing", "UI Design") with proficiency levels.
+
+**AgentAssignment** — Links an agent to a card with status tracking (pending/working/completed/failed).
+
+**Agent::Workspace** — Created automatically when an agent is assigned. Contains the agent's output (rich text), deliverables (file attachments), and a work log.
 
 ## Development Commands
 

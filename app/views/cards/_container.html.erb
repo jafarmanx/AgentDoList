@@ -16,6 +16,9 @@
           <div class="card__content">
             <%= render "cards/container/content", card: card %>
             <%= render "cards/display/perma/steps", card: card %>
+            <% card.agent_assignments.includes(:agent, workspace: { output_attachment: :blob }).each do |agent_assignment| %>
+              <%= render "cards/agent_work", agent_assignment: agent_assignment %>
+            <% end %>
           </div>
 
           <% if card.published? %>
