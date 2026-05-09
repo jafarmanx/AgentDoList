@@ -31,6 +31,11 @@ production: &production
     command: "Account::Export.cleanup"
     schedule: every hour at minute 20
 
+  # Agent container orchestration
+  agent_container_maintenance:
+    class: Agent::ContainerMaintenanceJob
+    schedule: every 60 seconds
+
 <% if CurioArch.saas? %>
   # Metrics
   yabeda_actioncable:

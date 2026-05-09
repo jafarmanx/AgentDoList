@@ -1,0 +1,60 @@
+<% @page_title = "Agent Dashboard" %>
+
+<% content_for :header do %>
+  <h1 class="header__title"><%= @page_title %></h1>
+<% end %>
+
+<%= tag.section class: "panel panel--wide shadow center" do %>
+  <h2 class="txt-large margin-none-block-start">Infrastructure</h2>
+  <div class="flex gap margin-block">
+    <div class="pad border rounded flex-grow">
+      <span class="txt-xx-small txt-subtle">Running</span>
+      <div class="txt-x-large font-weight-black"><%= @status[:running] %> / <%= @status[:max_concurrent] %></div>
+    </div>
+    <div class="pad border rounded flex-grow">
+      <span class="txt-xx-small txt-subtle">Queued</span>
+      <div class="txt-x-large font-weight-black"><%= @status[:queued] %></div>
+    </div>
+    <div class="pad border rounded flex-grow">
+      <span class="txt-xx-small txt-subtle">Available Slots</span>
+      <div class="txt-x-large font-weight-black"><%= @status[:available_slots] %></div>
+    </div>
+  </div>
+
+  <% if @running.any? %>
+    <h3 class="txt-medium margin-block-start">Active Containers</h3>
+    <ul class="flex flex-column gap-half unpad">
+      <% @running.each do |workspace| %>
+        <li class="flex align-center justify-space-between pad-half border rounded">
+          <div class="flex align-center gap-half">
+            <span class="badge badge--attention txt-xx-small">Running</span>
+            <strong><%= workspace.agent.name %></strong>
+            <span class="txt-subtle txt-small">on</span>
+            <%= link_to workspace.card.title.truncate(40), card_path(workspace.card), class: "txt-link txt-small" %>
+          </div>
+          <span class="txt-xx-small txt-subtle">
+            Started <%= distance_of_time_in_words_to_now(workspace.container_started_at) %> ago
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if @queued.any? %>
+    <h3 class="txt-medium margin-block-start">Queued Agents</h3>
+    <ul class="flex flex-column gap-half unpad">
+      <% @queued.each do |agent| %>
+        <li class="flex align-center gap-half pad-half border rounded">
+          <span class="badge txt-xx-small">Waiting</span>
+          <strong><%= agent.name %></strong>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="margin-block-start">
+    <%= link_to agents_path, class: "btn btn--plain txt-link" do %>
+      View all agents
+    <% end %>
+  </div>
+<% end %>

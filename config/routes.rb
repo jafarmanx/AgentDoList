@@ -75,6 +75,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :agents do
+    resource :dashboard, only: :show
+  end
+
   resources :cards do
     scope module: :cards do
       resource :board

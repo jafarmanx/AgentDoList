@@ -13,7 +13,7 @@ class AgentAssignment < ApplicationRecord
   scope :ordered, -> { order(created_at: :desc) }
 
   after_create :provision_workspace
-  after_create_commit :execute_later
+  after_create_commit :provision_container_later
 
   def execute_later
     AgentExecutionJob.perform_later(self)
@@ -43,5 +43,9 @@ class AgentAssignment < ApplicationRecord
   private
     def provision_workspace
       create_workspace!
+    end
+
+    def provision_container_later
+      Agent::ContainerProvisionJob.perform_later(workspace)
     end
 end
