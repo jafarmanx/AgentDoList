@@ -1,0 +1,30 @@
+<div class="flex flex-column gap-half">
+  <%= form.label :name do %>
+    <strong>Name</strong>
+  <% end %>
+  <%= form.text_field :name, required: true, autofocus: true, class: "input full-width", placeholder: "Name this agent…", autocomplete: "off", data: { action: "keydown.esc@document->form#cancel" } %>
+</div>
+
+<div class="flex flex-column gap-half">
+  <%= form.label :role_description do %>
+    <strong>Role</strong><br>
+    <p class="margin-none txt-x-small txt-subtle">A short description of what this agent does.</p>
+  <% end %>
+  <%= form.text_field :role_description, class: "input full-width", placeholder: "e.g. Code reviewer, QA tester…", data: { action: "keydown.esc@document->form#cancel" } %>
+</div>
+
+<div class="flex flex-column gap-half">
+  <%= form.label :personality do %>
+    <strong>Personality</strong><br>
+    <p class="margin-none txt-x-small txt-subtle">Describe the agent's communication style and approach.</p>
+  <% end %>
+  <%= form.text_area :personality, class: "input full-width", rows: 3, placeholder: "e.g. Thorough, detail-oriented, communicates clearly…", data: { action: "keydown.esc@document->form#cancel" } %>
+</div>
+
+<div class="flex flex-column gap-half">
+  <%= form.label :system_prompt do %>
+    <strong>System prompt</strong><br>
+    <p class="margin-none txt-x-small txt-subtle">Instructions sent to the AI model when this agent is activated.</p>
+  <% end %>
+  <%= form.text_area :system_prompt, class: "input full-width", rows: 6, placeholder: "You are a helpful assistant that…", data: { action: "keydown.esc@document->form#cancel" } %>
+</div>

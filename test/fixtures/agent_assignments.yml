@@ -1,0 +1,7 @@
+developer_on_one:
+  account: "37s"
+  agent: developer
+  card: one
+  assigned_by: david
+  status: working
+  started_at: <%= 1.hour.ago.to_fs(:db) %>

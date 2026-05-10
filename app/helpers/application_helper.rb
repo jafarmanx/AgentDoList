@@ -3,7 +3,7 @@ module ApplicationHelper
     account_name = if Current.account && Current.session&.identity&.users&.many?
       Current.account&.name
     end
-    tag.title [ @page_title, account_name, "CurioArch" ].compact.join(" | ")
+    tag.title [ @page_title, account_name, "CurioArch — AgentDoList" ].compact.join(" | ")
   end
 
   def icon_tag(name, **options)

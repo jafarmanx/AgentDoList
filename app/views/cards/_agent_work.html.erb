@@ -1,0 +1,51 @@
+<div class="card__agent-work margin-block pad border rounded" id="<%= dom_id(agent_assignment, :work) %>">
+  <div class="flex align-center justify-space-between margin-block-end-half">
+    <div class="flex align-center gap-half">
+      <span class="avatar avatar--x-small flex align-center justify-center txt-xx-small"><%= agent_assignment.agent.initials %></span>
+      <strong class="txt-small"><%= agent_assignment.agent.name %></strong>
+      <% if agent_assignment.agent.role_description.present? %>
+        <span class="txt-x-small txt-subtle"><%= agent_assignment.agent.role_description %></span>
+      <% end %>
+    </div>
+
+    <div class="flex align-center gap-half">
+      <% case agent_assignment.status %>
+      <% when "pending" %>
+        <span class="badge txt-xx-small">Queued</span>
+      <% when "working" %>
+        <span class="badge badge--attention txt-xx-small">Working&hellip;</span>
+      <% when "completed" %>
+        <span class="badge badge--positive txt-xx-small">Done</span>
+        <% if agent_assignment.duration %>
+          <span class="txt-xx-small txt-subtle"><%= distance_of_time_in_words(agent_assignment.duration) %></span>
+        <% end %>
+      <% when "failed" %>
+        <span class="badge badge--negative txt-xx-small">Failed</span>
+        <%= button_to card_agent_assignment_retry_path(agent_assignment.card, agent_assignment), class: "btn btn--plain txt-link txt-x-small" do %>
+          Retry
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if agent_assignment.workspace&.output&.body.present? %>
+    <div class="card__agent-output margin-block-start-half">
+      <%= agent_assignment.workspace.output.body %>
+    </div>
+  <% end %>
+
+  <% if agent_assignment.workspace&.deliverables&.any? %>
+    <div class="card__agent-deliverables flex flex-wrap gap-half margin-block-start-half">
+      <% agent_assignment.workspace.deliverables.each do |deliverable| %>
+        <%= link_to deliverable.filename, rails_blob_path(deliverable, disposition: :inline), class: "btn btn--plain txt-link txt-small", target: "_blank" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if agent_assignment.workspace&.log.present? %>
+    <details class="margin-block-start-half">
+      <summary class="txt-x-small txt-subtle cursor-pointer">Work log</summary>
+      <pre class="txt-xx-small txt-subtle margin-block-start-quarter pad-half border rounded overflow-auto" style="max-height: 12em;"><%= agent_assignment.workspace.log %></pre>
+    </details>
+  <% end %>
+</div>

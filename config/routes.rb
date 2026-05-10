@@ -69,6 +69,16 @@ Rails.application.routes.draw do
     resources :previews
   end
 
+  resources :agents do
+    scope module: :agents do
+      resources :skills, only: %i[ create destroy ]
+    end
+  end
+
+  namespace :agents do
+    resource :dashboard, only: :show
+  end
+
   resources :cards do
     scope module: :cards do
       resource :board
@@ -85,6 +95,9 @@ Rails.application.routes.draw do
       resource :reading
 
       resources :assignments
+      resources :agent_assignments, only: %i[ new create destroy ] do
+        resource :retry, only: :create, module: :agent_assignments
+      end
       resources :steps
       resources :taggings
 

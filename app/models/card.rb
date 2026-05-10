@@ -8,6 +8,8 @@ class Card < ApplicationRecord
   belongs_to :creator, class_name: "User", default: -> { Current.user }
 
   has_many :comments, dependent: :destroy
+  has_many :agent_assignments, dependent: :destroy
+  has_many :agents, through: :agent_assignments
   has_one_attached :image, dependent: :purge_later
 
   has_rich_text :description

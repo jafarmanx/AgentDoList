@@ -23,6 +23,16 @@
     <%= card.assignees.map { |assignee| "<strong>#{h assignee.familiar_name}</strong>" }.to_sentence.html_safe %>
   </span>
 
+  <% if card.agent_assignments.any? %>
+    <span class="card__meta-text overflow-ellipsis">
+      <%= icon_tag "curioarch" %>
+      <% card.agent_assignments.each do |aa| %>
+        <strong><%= aa.agent.name %></strong>
+        <span class="txt-subtle txt-small">(<%= aa.status %>)</span>
+      <% end %>
+    </span>
+  <% end %>
+
   <div class="card__meta-avatars card__meta-avatars--assignees">
     <%= yield %>
   </div>

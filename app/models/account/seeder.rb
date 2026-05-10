@@ -24,6 +24,24 @@ class Account::Seeder
       # ---------------
       # Playground Board
       # ---------------
+      # ---------------
+      # Default Agents
+      # ---------------
+      developer = account.agents.create! name: "Developer", role_description: "Full-stack developer", personality: "Methodical and detail-oriented. Writes clean, well-tested code.", system_prompt: "You are a senior full-stack developer. Write clean, maintainable code with tests."
+      developer.add_skill "Ruby on Rails", proficiency: "expert"
+      developer.add_skill "JavaScript", proficiency: "advanced"
+      developer.add_skill "SQL", proficiency: "advanced"
+
+      designer = account.agents.create! name: "Designer", role_description: "UI/UX designer", personality: "Creative and user-focused. Prioritizes clarity and simplicity.", system_prompt: "You are a UI/UX designer. Focus on clean, intuitive interfaces."
+      designer.add_skill "UI Design", proficiency: "expert"
+      designer.add_skill "CSS", proficiency: "expert"
+      designer.add_skill "Accessibility", proficiency: "advanced"
+
+      reviewer = account.agents.create! name: "Reviewer", role_description: "Code reviewer and QA", personality: "Thorough and constructive. Catches bugs before they ship.", system_prompt: "You are a code reviewer and QA specialist. Review code for correctness, security, and maintainability."
+      reviewer.add_skill "Code Review", proficiency: "expert"
+      reviewer.add_skill "Testing", proficiency: "expert"
+      reviewer.add_skill "Security", proficiency: "advanced"
+
       playground = account.boards.create! name: "Playground", creator: creator, all_access: true
       playground.update! auto_postpone_period: 365.days
 

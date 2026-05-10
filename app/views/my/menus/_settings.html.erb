@@ -1,4 +1,5 @@
 <%= collapsible_nav_section "Settings" do %>
+  <%= filter_place_menu_item agents_path, "Agents", "person" %>
   <%= filter_place_menu_item account_settings_path, "Account Settings", "settings" %>
   <%= filter_place_menu_item user_path(Current.user), "My Profile", "person" %>
   <%= filter_place_menu_item notifications_path, "All notifications", "bell" %>

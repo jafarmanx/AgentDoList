@@ -1,0 +1,23 @@
+developer_rails:
+  account: "37s"
+  agent: developer
+  name: Ruby on Rails
+  proficiency: expert
+
+developer_js:
+  account: "37s"
+  agent: developer
+  name: JavaScript
+  proficiency: advanced
+
+designer_ui:
+  account: "37s"
+  agent: designer
+  name: UI Design
+  proficiency: expert
+
+designer_css:
+  account: "37s"
+  agent: designer
+  name: CSS
+  proficiency: expert

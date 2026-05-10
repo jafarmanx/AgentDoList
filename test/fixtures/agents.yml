@@ -1,0 +1,23 @@
+developer:
+  account: "37s"
+  name: Developer
+  role_description: Full-stack developer
+  personality: Methodical and detail-oriented
+  system_prompt: You are a senior full-stack developer
+  status: active
+
+designer:
+  account: "37s"
+  name: Designer
+  role_description: UI/UX designer
+  personality: Creative and user-focused
+  system_prompt: You are a UI/UX designer
+  status: active
+
+reviewer:
+  account: "37s"
+  name: Reviewer
+  role_description: Code reviewer
+  personality: Thorough and constructive
+  system_prompt: You are a code reviewer
+  status: inactive

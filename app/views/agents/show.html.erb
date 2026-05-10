@@ -1,0 +1,100 @@
+<% @page_title = @agent.name %>
+
+<% content_for :header do %>
+  <div class="header__actions header__actions--start">
+    <%= back_link_to "Agents", agents_path, "keydown.left@document->hotkey#click keydown.esc@document->hotkey#click" %>
+  </div>
+
+  <h1 class="header__title"><%= @page_title %></h1>
+
+  <div class="header__actions header__actions--end">
+    <%= link_to edit_agent_path(@agent), class: "btn" do %>
+      <%= icon_tag "pencil" %>
+      <span class="for-screen-reader">Edit</span>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="panel panel--wide shadow center flex flex-column gap txt-align-start">
+  <header class="flex align-center gap">
+    <span class="avatar avatar--large flex align-center justify-center" title="<%= @agent.name %>"><%= @agent.initials %></span>
+    <div class="flex flex-column">
+      <h1 class="txt-x-large margin-none"><%= @agent.name %></h1>
+      <% if @agent.role_description.present? %>
+        <span class="txt-medium txt-subtle"><%= @agent.role_description %></span>
+      <% end %>
+      <span class="badge badge--<%= @agent.active? ? "positive" : "neutral" %> txt-xx-small"><%= @agent.status %></span>
+    </div>
+  </header>
+
+  <% if @agent.personality.present? %>
+    <div class="flex flex-column">
+      <h2 class="margin-none txt-uppercase txt-medium">Personality</h2>
+      <p class="margin-none"><%= @agent.personality %></p>
+    </div>
+  <% end %>
+
+  <div class="flex flex-column">
+    <h2 class="margin-none txt-uppercase txt-medium">Skills</h2>
+    <% if @agent.agent_skills.any? %>
+      <ul class="margin-none unpad-block">
+        <% @agent.agent_skills.ordered.each do |skill| %>
+          <li class="flex align-center justify-space-between gap pad-block-half">
+            <div class="flex align-center gap-half">
+              <span class="badge txt-xx-small"><%= skill.name %></span>
+              <span class="txt-x-small txt-subtle"><%= skill.proficiency %></span>
+            </div>
+            <%= button_to agent_skill_path(@agent, skill), method: :delete, class: "btn txt-x-small", data: { turbo_confirm: "Remove this skill?" } do %>
+              <%= icon_tag "close", size: 14 %>
+              <span class="for-screen-reader">Remove</span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="margin-none txt-subtle">No skills added yet.</p>
+    <% end %>
+
+    <%= form_with url: agent_skills_path(@agent), method: :post, class: "flex align-center gap-half margin-block-start-half", data: { controller: "form" } do |form| %>
+      <%= text_field_tag :name, nil, placeholder: "Add a skill…", class: "input txt-small", required: true, autocomplete: "off" %>
+      <%= select_tag :proficiency, options_for_select(AgentSkill::PROFICIENCY_LEVELS, "intermediate"), class: "input txt-small" %>
+      <button type="submit" class="btn btn--link txt-small">
+        <%= icon_tag "add" %>
+        <span>Add</span>
+      </button>
+    <% end %>
+  </div>
+
+  <% if @agent.system_prompt.present? %>
+    <div class="flex flex-column">
+      <h2 class="margin-none txt-uppercase txt-medium">System prompt</h2>
+      <pre class="txt-small" style="white-space: pre-wrap; word-break: break-word;"><%= @agent.system_prompt %></pre>
+    </div>
+  <% end %>
+
+  <div class="flex flex-column">
+    <h2 class="margin-none txt-uppercase txt-medium">Current assignments</h2>
+    <% if @agent.agent_assignments.any? %>
+      <ul class="margin-none unpad-block">
+        <% @agent.agent_assignments.ordered.each do |assignment| %>
+          <li class="flex align-center justify-space-between gap pad-block-half" style="border-block-end: 1px solid var(--color-ink-lighter)">
+            <div class="flex flex-column">
+              <strong><%= link_to assignment.card.title, card_path(assignment.card) %></strong>
+              <span class="txt-x-small txt-subtle">
+                <%= assignment.status %> &middot; Assigned by <%= assignment.assigned_by.name %>
+              </span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="margin-none txt-subtle">Not assigned to any cards.</p>
+    <% end %>
+  </div>
+
+  <hr class="separator--horizontal full-width" style="--border-color: var(--color-ink-light);" aria-hidden="true">
+
+  <%= button_to agent_path(@agent), method: :delete, class: "btn txt-x-small center", data: { turbo_confirm: "Are you sure you want to delete this agent?" } do %>
+    <span>Delete this agent</span>
+  <% end %>
+</div>
